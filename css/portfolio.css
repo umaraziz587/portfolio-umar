@@ -1,0 +1,781 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #222;
+  border-right: 1px solid #555;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This helps push content apart */
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #eaf6fd;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar .profile {
+  text-align: center;
+}
+
+.sidebar .profile img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.sidebar .profile h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.sidebar nav a {
+  display: block;
+  color: #eaf6fd;
+  text-decoration: none;
+  padding: 12px 0;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  color: #ffffff; /* Active and hover color is now white */
+  font-weight: bold;
+}
+
+.sidebar footer {
+  font-size: 0.8rem;
+  color: #bbb;
+  text-align: center;
+  transition: color 0.3s;
+}
+
+/* Social Icons Styles */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.social-icons a img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a img:hover {
+  transform: scale(1.1);
+}
+
+/* Main Content Area */
+.content {
+    margin-left: 250px; /* Adjust based on sidebar width */
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.section {
+    padding: 40px;
+    margin-bottom: 30px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.section h1, .section h2 {
+    color: #3e8ef1;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* About Section */
+.intro-text {
+    text-align: center;
+    margin-bottom: 20px; /* Add some space below the intro text */
+    font-size: 1.1em; /* Optionally make it slightly larger */
+    color: #ffffff; /* Optionally make it stand out more */
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.about-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #3e8ef1;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.education-section,
+.work-experience {
+    flex: 1;
+    min-width: 280px; /* Minimum width for sections before wrapping */
+}
+
+/* Education and Work Experience Timeline Styles */
+.education-timeline,
+.work-timeline { /* Target the inner wrapper for timeline */
+    margin-top: 20px;
+    position: relative;
+    padding-left: 0; /* Remove padding here, it's managed by timeline-item's margin */
+}
+
+.education-timeline::before,
+.work-timeline::before { /* Vertical line */
+    content: '';
+    position: absolute;
+    left: 60px; /* Position of the vertical line from the wrapper's left edge */
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #555;
+}
+
+.timeline-item { /* Each individual entry box */
+    position: relative; /* Crucial for absolute positioning of year/bullet children */
+    margin-bottom: 30px;
+    padding: 15px; /* Padding for the content inside the box */
+    background-color: #333;
+    border-radius: 8px;
+    border-left: none; /* Remove previous border */
+    margin-left: 120px; /* Pushes the entire content box to the right of the line/markers */
+    min-height: 50px; /* Ensures enough vertical space for content */
+}
+
+.timeline-year {
+    position: absolute;
+    left: -123px; /* Calculated to place year to the left of the bullet with a small gap */
+    top: 15px; /* Adjust vertical alignment */
+    font-weight: bold;
+    color: #3e8ef1;
+    font-size: 1.1em;
+    text-align: right;
+    width: 50px; /* Width of the year text container */
+    z-index: 2; /* Bring year text above the line */
+    background-color: #2a2a2a; /* Match section background to hide the line behind the year text */
+    padding-right: 5px; /* Small padding between year text and bullet/line */
+}
+
+.timeline-bullet {
+    position: absolute;
+    left: -68px; /* Calculated to center the bullet on the vertical line */
+    top: 18px; /* Adjust vertical alignment with content */
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #3e8ef1;
+    border: 2px solid #2a2a2a; /* Border to visually separate from the background */
+    z-index: 2; /* Bring bullet above the line */
+}
+
+.timeline-content {
+    /* This div wraps the actual H4 and UL/LI. It sits inside .timeline-item. */
+    /* No specific positioning needed here as .timeline-item itself handles its position and padding. */
+    padding-left: 0; /* Ensure no extra padding from previous steps */
+}
+
+/* Adjust existing h4 and ul/li styles for timeline-item children */
+.timeline-item h4 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.timeline-item ul {
+    list-style: disc;
+    margin: 0;
+    padding: 0 0 0 20px;
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+.timeline-item ul li {
+    margin-bottom: 5px;
+    color: #ccc;
+}
+.timeline-item ul li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Skills Section Styling */
+#skills .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust minmax for desired icon size */
+    grid-template-rows: auto auto; /* For the two rows */
+    justify-items: center; /* Center items in each grid cell */
+}
+
+.skill {
+    text-align: center;
+    margin: 20px;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.skill img {
+    width: 80px; /* Adjust icon size */
+    height: 80px; /* Adjust icon size */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;
+    object-fit: contain; /* Changed from cover to contain to prevent stretching */
+}
+
+.skill:hover img {
+    transform: scale(1.1);
+}
+
+.skill-level {
+    color: #bbb;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.skill-name {
+    color: #fff;
+    margin-top: 5px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Soft Skills Section Styling */
+#soft-skills .soft-skills-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.soft-skill-container {
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    min-width: 120px; /* Adjust as needed */
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.soft-skill-container:hover {
+    transform: translateY(-5px);
+    background-color: #3e8ef1;
+}
+
+.soft-skill-container img {
+    width: 50px; /* Adjust icon size */
+    height: 50px; /* Adjust icon size */
+    margin-bottom: 5px;
+}
+
+.soft-skill-title {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Portfolio Section */
+#portfolio .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.portfolio-card {
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* For video expansion */
+    z-index: 1; /* Default z-index */
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 180px; /* Fixed height for images */
+    object-fit: cover;
+    display: block;
+    cursor: pointer; /* Indicate images are clickable for fullscreen */
+}
+
+.portfolio-card video {
+    width: 100%;
+    height: 180px; /* Fixed height for videos */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    z-index: 2; /* Ensure video is above other card content when not expanded */
+}
+
+.portfolio-card video.expanded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Take full height of its container */
+    transform: scale(1.5); /* Enlarge the video */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    z-index: 5; /* Bring expanded video to front */
+    transform-origin: center center; /* Scale from the center */
+}
+
+.portfolio-content {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1; /* Allow content to take available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.portfolio-content h4 {
+    color: #3e8ef1;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.portfolio-content p {
+    color: #ccc;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.portfolio-content .view-tiktok-btn {
+    display: inline-block;
+    background-color: #3e8ef1;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+    margin-top: auto; /* Push button to bottom of card content */
+}
+
+.portfolio-content .view-tiktok-btn:hover {
+    background-color: #2c6bb7;
+}
+
+/* Mobile Photos Slider Styles */
+.mobile-photos-slider-container {
+    position: relative;
+    width: 90%; /* Adjust width as needed */
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.mobile-photos-slider {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to items */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none;  /* Hide scrollbar for IE/Edge */
+}
+
+.mobile-photos-slider::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+}
+
+.portfolio-thumb {
+    flex: 0 0 auto; /* Prevent shrinking/growing */
+    width: calc(33.33% - 10px); /* Show approx 3 items, adjust for margin */
+    margin-right: 10px;
+    scroll-snap-align: start; /* Snap to the start of each item */
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.portfolio-thumb:last-child {
+    margin-right: 0;
+}
+
+.portfolio-thumb img {
+    width: 100%;
+    height: 150px; /* Fixed height for thumbs */
+    object-fit: cover;
+    display: block;
+    cursor: pointer; /* Indicate images are clickable for fullscreen */
+}
+
+.portfolio-thumb:hover {
+    transform: translateY(-3px);
+}
+
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.slider-nav:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slider-prev {
+    left: 0;
+}
+
+.slider-next {
+    right: 0;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #222;
+    margin-top: 50px;
+    border-top: 1px solid #333;
+    border-radius: 8px;
+}
+
+footer h2 {
+    color: #3e8ef1;
+    margin-bottom: 20px;
+}
+
+footer p {
+    color: #ccc;
+    margin: 5px 0;
+}
+
+/* Styling for the Email Me button in footer */
+.footer-button-link {
+    background-color: #3e8ef1;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px 10px 0;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    text-decoration: none; /* Remove underline for anchor tag */
+    display: inline-block; /* Allow padding and margin */
+}
+
+.footer-button-link:hover {
+    background-color: #2c6bb7;
+}
+
+/* Back to Top Button */
+#backToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    bottom: 30px; /* Place at the bottom */
+    right: 30px; /* Place at the right */
+    z-index: 99; /* Make sure it's on top */
+    background-color: #3e8ef1; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove borders */
+    border-radius: 50%; /* Circular button */
+    padding: 15px; /* Some padding */
+    font-size: 18px; /* Increase font size */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#backToTopBtn:hover {
+    background-color: #2c6bb7; /* Darker blue on hover */
+    transform: translateY(-3px);
+}
+
+/* Fullscreen Overlay for Images */
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Very high to be on top */
+    cursor: pointer; /* Indicate clickable to close */
+}
+.fullscreen-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+/* Skill Modal Popup */
+.skill-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.skill-popup-content {
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: #e0e0e0;
+}
+.skill-popup-content h3 {
+    color: #3e8ef1;
+    margin-top: 0;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+.skill-popup-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+.skill-popup-content .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* General content adjustments */
+    .content {
+        padding: 15px;
+    }
+
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .education-section,
+    .work-experience {
+        width: 100%;
+    }
+
+    #skills .cards {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .soft-skill-container {
+        min-width: 100px;
+        padding: 10px;
+    }
+
+    .soft-skill-container img {
+        width: 40px;
+        height: 40px;
+    }
+
+    #portfolio .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .portfolio-card video.expanded {
+        transform: scale(1.5);
+    }
+
+    .mobile-photos-slider-container {
+        width: 95%;
+    }
+
+    .portfolio-thumb {
+        width: calc(50% - 10px); /* Show approx 2 items on smaller screens */
+    }
+
+    .slider-nav {
+        font-size: 1.2em;
+        padding: 8px 12px;
+    }
+
+    .slider-prev {
+        left: 0;
+    }
+
+    .slider-next {
+        right: 0;
+    }
+}
+
+/* Responsive Design for Sidebar */
+@media (max-width: 600px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #555;
+  }
+  /* Additional adjustments for main content if sidebar is static */
+  .content {
+      margin-left: 0; /* Reset margin when sidebar is static */
+  }
+
+    .sidebar nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sidebar nav a {
+        padding: 8px 15px;
+        margin: 5px;
+        flex-grow: 1;
+        max-width: calc(50% - 10px); /* Two columns */
+    }
+    
+    .sidebar .profile img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .sidebar nav a {
+        font-size: 0.9em;
+        max-width: calc(100% - 10px); /* One column on very small screens */
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    #skills .cards {
+        grid-template-columns: 1fr; /* Stack skills vertically */
+    }
+
+    .soft-skills-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .soft-skill-container {
+        min-width: unset;
+        width: 90%; /* Full width for soft skills */
+        margin: 0 auto;
+    }
+
+    #portfolio .portfolio-grid {
+        grid-template-columns: 1fr; /* Stack portfolio items vertically */
+    }
+
+    .portfolio-card video.expanded {
+        transform: scale(1.1); /* Less aggressive scale on small screens */
+    }
+
+    .mobile-photos-slider-container {
+        width: 100%;
+    }
+
+    .portfolio-thumb {
+        width: calc(100% - 10px); /* One item at a time on smallest screens */
+    }
+
+    footer button {
+        margin: 10px 5px;
+        padding: 8px 15px;
+    }
+
+    #backToTopBtn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .slider-nav {
+        padding: 6px 10px; /* Smaller padding */
+        font-size: 1.1em; /* Smaller font */
+        top: calc(50% - 20px); /* Adjust top to avoid overlapping images directly */
+    }
+    .slider-prev {
+        left: 0;
+    }
+    .slider-next {
+        right: 0;
+    }
+
+    /* Timeline Responsive Adjustments */
+    .timeline-item {
+        margin-left: 80px; /* Adjust margin for smaller screens */
+    }
+
+    .education-timeline::before,
+    .work-timeline::before {
+        left: 40px; /* Adjust line position for smaller screens */
+    }
+
+    .timeline-year {
+        left: -80px; /* Adjust year position */
+        width: 40px;
+        font-size: 0.9em;
+    }
+
+    .timeline-bullet {
+        left: -40px; /* Adjust bullet position to center on new line */
+        top: 16px;
+    }
+}
+
+/* Mobile Photos Slider Styles */
+.mobile-photos-slider {
+    cursor: grab; /* Indicate it's draggable */
+}
+
+.mobile-photos-slider.active-drag {
+    cursor: grabbing; /* Cursor when dragging */
+}

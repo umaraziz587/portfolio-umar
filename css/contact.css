@@ -1,0 +1,236 @@
+/* General Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f5f5f5;
+  display: flex;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #222;
+  border-right: 1px solid #555;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This helps push content apart */
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #eaf6fd;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar .profile {
+  text-align: center;
+}
+
+.sidebar .profile img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.sidebar .profile h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.sidebar nav a {
+  display: block;
+  color: #eaf6fd;
+  text-decoration: none;
+  padding: 12px 0;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  color: #ffffff; /* Changed active and hover color to white */
+  font-weight: bold;
+}
+
+.sidebar footer {
+  font-size: 0.8rem;
+  color: #bbb;
+  text-align: center;
+  transition: color 0.3s;
+}
+
+/* Social Icons Styles */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px; /* Adjusted margin, but flexbox handles main spacing */
+}
+
+.social-icons a img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a img:hover {
+  transform: scale(1.1);
+}
+
+/* Main Content Styles */
+.content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Contact Form Styles */
+.contact-container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: #3e8ef1; /* Changed header color */
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #cccccc;
+}
+
+/* New style for email display */
+.contact-email-display {
+  margin-top: -15px; /* Pull it up slightly to compensate for p margin-bottom */
+  margin-bottom: 30px; /* Space before the form */
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically align items */
+  color: #cccccc; /* Match paragraph color */
+  font-size: 18px;
+}
+
+.contact-email-display img {
+  width: 24px; /* Set desired size */
+  height: 24px;
+  margin-right: 10px; /* Space between image and text */
+  object-fit: contain; /* Ensure image scales properly */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-box {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.name-fields {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  padding: 12px;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #f5f5f5;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #888;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  display: block;
+  color: #dddddd;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+button {
+  width: 120px;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background: #3e8ef1; /* Changed button background color */
+  color: #ffffff; /* Changed button text color to white */
+  cursor: pointer;
+  font-weight: bold;
+  align-self: flex-end;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #3474d1; /* Slightly darker hover for consistency */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #555;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .contact-container {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .name-fields {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+}

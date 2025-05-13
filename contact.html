@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="profile">
+      <img src="img/IMG-20250506-WA0087.jpg" alt="Profile" />
+      <h2>Umar</h2>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">About</a>
+        <a href="portfolio.html">Skills</a>
+        <a href="portfolio.html">Past Works</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+    <footer></footer>
+    <div class="social-icons">
+      <a href="https://snapchat.com/t/JUY3ZnfG" target="_blank">
+        <img src="img/snapchat.png" alt="Snapchat">
+      </a>
+      <a href="https://www.facebook.com/share/1946ZcsX65/?mibextid=wwXIfr" target="_blank">
+        <img src="img/facebook.png" alt="Facebook">
+      </a>
+      <a href="https://www.tiktok.com/@umarraziz?_t=ZS-8w9FpgdGQB5&_r=1" target="_blank">
+        <img src="img/tiktok.png" alt="TikTok">
+      </a>
+      <a href="https://www.instagram.com/umarrziz?igsh=ZGd4aGV6YWFpaDFl&utm_source=qr" target="_blank">
+        <img src="img/ig.png" alt="Instagram">
+      </a>
+    </div>
+  </aside>
+
+  <div class="content">
+    <div class="contact-container">
+      <h1>Contact</h1>
+      <p>Have a project and like my style? Just want to say hey? Get in touch!</p>
+      <div class="contact-email-display">
+        <img src="img/email.png" alt="Email Icon">
+        <span>uabdulaziz58@gmail.com</span>
+      </div>
+      <form action="mailto:uabdulaziz58@gmail.com" method="POST" enctype="text/plain">
+        <div class="info-box">
+          <div class="name-fields">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="First Name" placeholder="First name" required>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Last Name *</label>
+              <input type="text" id="lastname" name="Last Name" placeholder="Last name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="Email" placeholder="example@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="Message" placeholder="Write your message here..." required></textarea>
+          </div>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
